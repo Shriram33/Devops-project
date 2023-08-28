@@ -1,8 +1,10 @@
-#Container to run mysql database for project
-db:
+version: '3'  # The version of Docker Compose configuration being used
+
+services:
+  db:  # Container to run MySQL database
     image: mysql:5.7
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql  # Mounting the volume to persist database data
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
@@ -10,13 +12,12 @@ db:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
-#Container to run wordpress and connect to the above container
-  wordpress:
+  wordpress:  # Container to run WordPress and connect to the above container
     image: wordpress:latest
     depends_on:
-      - db
+      - db  # Specify that the WordPress container depends on the db container
     ports:
-      - "8081:80"
+      - "8081:80"  # Mapping host port 8080 to container port 80
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
@@ -24,6 +25,5 @@ db:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
 
-#Create a instance of the volume for database
 volumes:
-  db_data: {}
+  db_data: {}  # Creating a named volume for MySQL data persistence
