@@ -24,6 +24,6 @@ db:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
 
-#Create a instance of the volume
+#Create a instance of the volume for database
 volumes:
   db_data: {}
