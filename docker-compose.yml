@@ -1,4 +1,4 @@
-#Container to run mysql database
+#Container to run mysql database for project
 db:
     image: mysql:5.7
     volumes:
