@@ -27,3 +27,4 @@ db:
 #Create a instance of the volume
 volumes:
   db_data: {}
+  
